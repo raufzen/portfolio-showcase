@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { repo } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // Related repos in the same category
 const relatedRepos = reposData
@@ -26,9 +27,9 @@ const relatedRepos = reposData
     
     <!-- Breadcrumbs -->
     <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400 mb-8">
-      <a href="/" class="hover:text-cyan-400 transition">Home</a>
+      <a href={`${baseUrl}/`} class="hover:text-cyan-400 transition">Home</a>
       <span>/</span>
-      <a href="/#repos" class="hover:text-cyan-400 transition">Repositories</a>
+      <a href={`${baseUrl}/#repos`} class="hover:text-cyan-400 transition">Repositories</a>
       <span>/</span>
       <span class="text-slate-200 font-medium truncate">{repo.title}</span>
     </nav>
@@ -88,7 +89,7 @@ const relatedRepos = reposData
         </a>
 
         <a 
-          href="/docs" 
+          href={`${baseUrl}/docs`} 
           class="px-5 py-3 rounded-xl font-semibold text-cyan-400 bg-cyan-950/40 hover:bg-cyan-900/40 border border-cyan-500/30 transition"
         >
           View Full Documentation
@@ -145,7 +146,7 @@ const relatedRepos = reposData
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {relatedRepos.map((rel) => (
             <a 
-              href={`/repo/${rel.slug}`} 
+              href={`${baseUrl}/repo/${rel.slug}`} 
               class="p-4 rounded-xl glass-panel hover:border-cyan-500/40 transition block group"
             >
               <div class="text-xs text-cyan-400 font-mono mb-1">{rel.language}</div>

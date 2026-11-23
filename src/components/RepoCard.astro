@@ -20,6 +20,7 @@ interface Props {
 }
 
 const { repo } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // Language dot colors
 const langColors: Record<string, string> = {
@@ -60,7 +61,7 @@ const langBadgeClass = langColors[repo.language] || langColors["Other"];
 
     <!-- Title & Links -->
     <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between">
-      <a href={`/repo/${repo.slug}`} class="focus:outline-none hover:underline">
+      <a href={`${baseUrl}/repo/${repo.slug}`} class="focus:outline-none hover:underline">
         {repo.title}
       </a>
       <a 
@@ -129,7 +130,7 @@ const langBadgeClass = langColors[repo.language] || langColors["Other"];
 
       <!-- Detail Link -->
       <a 
-        href={`/repo/${repo.slug}`} 
+        href={`${baseUrl}/repo/${repo.slug}`} 
         class="inline-flex items-center gap-1 font-semibold text-cyan-400 hover:text-cyan-300 transition group-hover:translate-x-0.5"
       >
         <span>Docs</span>

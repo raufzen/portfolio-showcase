@@ -3,7 +3,8 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://raufzen-showcase.vercel.app',
+  site: 'https://raufzen.github.io',
+  base: '/portfolio-showcase',
   output: 'static',
   integrations: [tailwind({ applyBaseStyles: false })]
 });

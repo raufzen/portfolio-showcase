@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import reposData from '../data/repos.json';
 
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 // Get flagship projects with full docs
 const flagshipRepos = reposData.filter(r => r.featured || ['dev-arsenal', 'public-apis'].includes(r.name));
 ---
@@ -169,17 +170,6 @@ const flagshipRepos = reposData.filter(r => r.featured || ['dev-arsenal', 'publi
           <p class="leading-relaxed">
             <strong>KomalAI</strong> enables total hands-free phone control via voice commands. Powered by Google Gemini multimodal API and Android's Accessibility Services, it perceives the current screen state, plans high-level user actions (click, scroll, type), and autonomously executes them on the phone.
           </p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-              <strong class="text-white block mb-1">Multimodal Vision & Plan</strong>
-              Understands screen hierarchies, button labels, and visual layouts to decide accurate click coordinates.
-            </div>
-            <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-              <strong class="text-white block mb-1">Voice Activation</strong>
-              Wake-word detection and continuous streaming audio transcription for seamless hands-free assistance.
-            </div>
-          </div>
         </div>
       </section>
 

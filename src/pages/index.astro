@@ -7,6 +7,8 @@ import FilterBar from '../components/FilterBar.astro';
 import Footer from '../components/Footer.astro';
 import reposData from '../data/repos.json';
 
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 // Extract unique categories & languages
 const categories = [...new Set(reposData.map((r) => r.category))];
 const languages = [...new Set(reposData.map((r) => r.language).filter((l) => l && l !== 'Other'))];
@@ -111,7 +113,7 @@ const featuredRepos = reposData.filter((r) => r.featured);
               Follow on GitHub (@raufzen)
             </a>
             <a 
-              href="/docs" 
+              href={`${baseUrl}/docs`} 
               class="px-5 py-2.5 rounded-xl font-semibold text-cyan-400 hover:text-cyan-300 transition"
             >
               Explore Project Documentation →
