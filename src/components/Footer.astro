@@ -1,0 +1,37 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="mt-24 border-t border-slate-800/80 bg-[#070b14]/90 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <!-- Left info -->
+      <div class="flex items-center gap-3">
+        <img 
+          src="https://avatars.githubusercontent.com/u/232077185?v=4" 
+          alt="Rauf Zen" 
+          class="w-10 h-10 rounded-full ring-2 ring-cyan-500/30"
+        />
+        <div>
+          <div class="font-bold text-white text-sm">Rauf Zen (@raufzen)</div>
+          <div class="text-xs text-slate-400">Android & Full-Stack Developer · Security & AI Explorer</div>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="flex flex-wrap items-center gap-6 text-xs sm:text-sm text-slate-400">
+        <a href="https://github.com/raufzen" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition">GitHub Profile</a>
+        <a href="/docs" class="hover:text-cyan-400 transition">Documentation</a>
+        <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition">Hosted on Vercel</a>
+      </div>
+
+      <!-- Copyright & Vercel Deploy Badge -->
+      <div class="text-xs text-slate-500 text-center md:text-right">
+        <p>© {currentYear} Rauf Zen. All rights reserved.</p>
+        <p class="mt-1">Crafted with Astro & Tailwind CSS</p>
+      </div>
+
+    </div>
+  </div>
+</footer>

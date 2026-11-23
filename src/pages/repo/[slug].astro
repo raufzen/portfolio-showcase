@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import reposData from '../../data/repos.json';
+
+export async function getStaticPaths() {
+  return reposData.map((repo) => ({
+    params: { slug: repo.slug },
+    props: { repo }
+  }));
+}
+
+const { repo } = Astro.props;
+
+// Related repos in the same category
+const relatedRepos = reposData
+  .filter((r) => r.category === repo.category && r.name !== repo.name)
+  .slice(0, 3);
+---
+
+<Layout title={`${repo.title} | Documentation & Source - Rauf Zen`}>
+  <Navbar />
+
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <!-- Breadcrumbs -->
+    <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-400 mb-8">
+      <a href="/" class="hover:text-cyan-400 transition">Home</a>
+      <span>/</span>
+      <a href="/#repos" class="hover:text-cyan-400 transition">Repositories</a>
+      <span>/</span>
+      <span class="text-slate-200 font-medium truncate">{repo.title}</span>
+    </nav>
+
+    <!-- Main Card -->
+    <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800 mb-10">
+      
+      <!-- Top badges -->
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div class="flex items-center gap-2">
+          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 border border-slate-700 text-cyan-400">
+            {repo.category}
+          </span>
+          {repo.featured && (
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              ★ Featured
+            </span>
+          )}
+        </div>
+
+        <div class="flex items-center gap-4 text-xs sm:text-sm text-slate-400">
+          <span class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+            {repo.language}
+          </span>
+          <span class="flex items-center gap-1 text-slate-300">
+            ★ {repo.stars} stars
+          </span>
+          <span class="hidden sm:inline text-slate-500">
+            Updated: {repo.updated_at}
+          </span>
+        </div>
+      </div>
+
+      <!-- Title & Repo Tag -->
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-2">{repo.title}</h1>
+      <p class="font-mono text-xs sm:text-sm text-cyan-400/90 mb-6">github.com/raufzen/{repo.name}</p>
+
+      <!-- Description -->
+      <div class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+        {repo.description}
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center gap-4 pb-8 mb-8 border-b border-slate-800">
+        <a 
+          href={repo.html_url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="px-6 py-3 rounded-xl font-semibold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-cyan-500/40 transition flex items-center gap-2 shadow-sm"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>Open on GitHub</span>
+          <span>↗</span>
+        </a>
+
+        <a 
+          href="/docs" 
+          class="px-5 py-3 rounded-xl font-semibold text-cyan-400 bg-cyan-950/40 hover:bg-cyan-900/40 border border-cyan-500/30 transition"
+        >
+          View Full Documentation
+        </a>
+      </div>
+
+      <!-- Quick Clone Snippet -->
+      <div class="mb-8">
+        <label class="text-xs uppercase font-bold tracking-wider text-slate-400 block mb-2">Clone Repository</label>
+        <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs sm:text-sm text-cyan-300">
+          <span class="truncate">git clone {repo.html_url}.git</span>
+          <button 
+            onclick={`navigator.clipboard.writeText('git clone ${repo.html_url}.git'); alert('Copied git clone command!');`}
+            class="ml-3 px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-sans transition"
+          >
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <!-- Key Features -->
+      {repo.features && repo.features.length > 0 && (
+        <div class="mb-8">
+          <h2 class="text-lg font-bold text-white mb-3">Key Features & Highlights</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {repo.features.map((feature: string) => (
+              <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800 flex items-start gap-2.5">
+                <span class="text-cyan-400 font-bold text-sm">✓</span>
+                <span class="text-xs sm:text-sm text-slate-300">{feature}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Tech Stack -->
+      <div>
+        <h2 class="text-lg font-bold text-white mb-3">Technologies Used</h2>
+        <div class="flex flex-wrap gap-2">
+          {repo.tech_stack && repo.tech_stack.map((t: string) => (
+            <span class="px-3 py-1 rounded-lg text-xs font-mono bg-slate-900 text-cyan-300 border border-slate-800">
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Related in Same Category -->
+    {relatedRepos.length > 0 && (
+      <div>
+        <h2 class="text-xl font-bold text-white mb-4">More in {repo.category}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {relatedRepos.map((rel) => (
+            <a 
+              href={`/repo/${rel.slug}`} 
+              class="p-4 rounded-xl glass-panel hover:border-cyan-500/40 transition block group"
+            >
+              <div class="text-xs text-cyan-400 font-mono mb-1">{rel.language}</div>
+              <div class="font-bold text-white group-hover:text-cyan-300 transition text-sm">{rel.title}</div>
+              <div class="text-xs text-slate-400 mt-1 line-clamp-2">{rel.description}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+  </main>
+
+  <Footer />
+</Layout>

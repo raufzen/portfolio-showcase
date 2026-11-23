@@ -1,0 +1,178 @@
+---
+interface Props {
+  categories: string[];
+  languages: string[];
+  totalCount: number;
+}
+
+const { categories, languages, totalCount } = Astro.props;
+---
+
+<div class="glass-panel rounded-2xl p-4 sm:p-6 mb-8 border border-slate-800">
+  <!-- Top: Search bar & Sort -->
+  <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between mb-5">
+    
+    <!-- Search Input -->
+    <div class="relative flex-grow">
+      <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+      </div>
+      <input 
+        type="text" 
+        id="search-input" 
+        placeholder="Search repositories by name, description, skill or tag..." 
+        class="w-full pl-11 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 text-slate-100 placeholder-slate-500 text-sm outline-none transition"
+      />
+      <button 
+        id="clear-search" 
+        class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-white"
+        title="Clear Search"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- Language Selector & Active Counter -->
+    <div class="flex items-center gap-3">
+      <div class="relative">
+        <select 
+          id="lang-select" 
+          class="appearance-none bg-slate-900/90 border border-slate-700/80 text-slate-200 text-xs sm:text-sm rounded-xl px-4 py-2.5 pr-8 focus:border-cyan-500 outline-none cursor-pointer"
+        >
+          <option value="all">All Languages</option>
+          {languages.map((lang) => (
+            <option value={lang.toLowerCase()}>{lang}</option>
+          ))}
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-400">
+          ▼
+        </div>
+      </div>
+
+      <div class="text-xs sm:text-sm font-medium text-slate-400 whitespace-nowrap px-3 py-2 rounded-xl bg-slate-900/50 border border-slate-800">
+        Showing <span id="visible-count" class="text-cyan-400 font-bold">{totalCount}</span> of {totalCount}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Category Pills Filter -->
+  <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs sm:text-sm">
+    <button 
+      class="cat-filter active-filter px-3.5 py-1.5 rounded-xl font-medium transition whitespace-nowrap bg-cyan-500 text-white shadow-sm shadow-cyan-500/20"
+      data-category="all"
+    >
+      All Projects ({totalCount})
+    </button>
+    {categories.map((cat) => (
+      <button 
+        class="cat-filter px-3.5 py-1.5 rounded-xl font-medium text-slate-300 hover:text-white hover:bg-slate-800 bg-slate-900/70 border border-slate-800 transition whitespace-nowrap"
+        data-category={cat.toLowerCase()}
+      >
+        {cat}
+      </button>
+    ))}
+  </div>
+</div>
+
+<script>
+  // Client-side filtering logic
+  function setupFilters() {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const clearBtn = document.getElementById('clear-search');
+    const langSelect = document.getElementById('lang-select') as HTMLSelectElement;
+    const catButtons = document.querySelectorAll('.cat-filter');
+    const repoCards = document.querySelectorAll('.repo-item') as NodeListOf<HTMLElement>;
+    const visibleCountEl = document.getElementById('visible-count');
+    const noResultsEl = document.getElementById('no-results');
+
+    let currentCategory = 'all';
+    let currentLanguage = 'all';
+    let currentSearch = '';
+
+    function applyFilters() {
+      let visible = 0;
+
+      repoCards.forEach((card) => {
+        const name = card.dataset.name || '';
+        const title = card.dataset.title || '';
+        const desc = card.dataset.desc || '';
+        const cat = card.dataset.category || '';
+        const lang = card.dataset.language || '';
+
+        const matchesSearch = !currentSearch || 
+          name.includes(currentSearch) || 
+          title.includes(currentSearch) || 
+          desc.includes(currentSearch);
+
+        const matchesCategory = currentCategory === 'all' || cat === currentCategory;
+        const matchesLanguage = currentLanguage === 'all' || lang === currentLanguage;
+
+        if (matchesSearch && matchesCategory && matchesLanguage) {
+          card.classList.remove('hidden');
+          visible++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (visibleCountEl) visibleCountEl.textContent = String(visible);
+      if (noResultsEl) {
+        if (visible === 0) {
+          noResultsEl.classList.remove('hidden');
+        } else {
+          noResultsEl.classList.add('hidden');
+        }
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentSearch = (e.target as HTMLInputElement).value.toLowerCase().trim();
+        if (clearBtn) {
+          if (currentSearch) clearBtn.classList.remove('hidden');
+          else clearBtn.classList.add('hidden');
+        }
+        applyFilters();
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (searchInput) {
+          searchInput.value = '';
+          currentSearch = '';
+          clearBtn.classList.add('hidden');
+          applyFilters();
+        }
+      });
+    }
+
+    if (langSelect) {
+      langSelect.addEventListener('change', (e) => {
+        currentLanguage = (e.target as HTMLSelectElement).value.toLowerCase();
+        applyFilters();
+      });
+    }
+
+    catButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        catButtons.forEach((b) => {
+          b.classList.remove('bg-cyan-500', 'text-white', 'shadow-sm', 'shadow-cyan-500/20');
+          b.classList.add('text-slate-300', 'bg-slate-900/70', 'border-slate-800');
+        });
+        btn.classList.add('bg-cyan-500', 'text-white', 'shadow-sm', 'shadow-cyan-500/20');
+        btn.classList.remove('text-slate-300', 'bg-slate-900/70', 'border-slate-800');
+
+        currentCategory = (btn as HTMLElement).dataset.category || 'all';
+        applyFilters();
+      });
+    });
+  }
+
+  // Run when DOM loads and on Astro page transitions
+  document.addEventListener('DOMContentLoaded', setupFilters);
+  document.addEventListener('astro:page-load', setupFilters);
+</script>

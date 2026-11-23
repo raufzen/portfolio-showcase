@@ -1,0 +1,1001 @@
+[
+  {
+    "name": "Al-Quraan-deen-apk",
+    "slug": "al-quraan-deen-apk",
+    "title": "Al-Quraan Deen App",
+    "category": "Islamic & Lifestyle Apps",
+    "description": "Full-featured Al-Quraan Islamic application providing authentic Arabic recitation, multi-language translations, offline audio playback, and prayer notifications.",
+    "language": "Kotlin",
+    "stars": 2,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-21",
+    "html_url": "https://github.com/raufzen/Al-Quraan-deen-apk",
+    "featured": true,
+    "badge": "Featured Mobile App",
+    "icon": "book-open",
+    "features": [
+      "Full 114 Surahs with high quality audio recitations",
+      "Urdu and English translations side-by-side",
+      "Offline mode with quick bookmarking & search",
+      "Accurate prayer times and Qibla locator"
+    ],
+    "tech_stack": [
+      "Kotlin",
+      "Android Jetpack",
+      "SQLite / Room",
+      "ExoPlayer"
+    ]
+  },
+  {
+    "name": "Rauf-Browser-",
+    "slug": "rauf-browser-",
+    "title": "Rauf Browser",
+    "category": "Android Apps & Tools",
+    "description": "A lightweight, privacy-focused Android Web Browser designed for lightning-fast surfing, low memory consumption, and tracking protection.",
+    "language": "Kotlin",
+    "stars": 1,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-23",
+    "html_url": "https://github.com/raufzen/Rauf-Browser-",
+    "featured": true,
+    "badge": "Privacy Browser",
+    "icon": "globe",
+    "features": [
+      "Hardware-accelerated web rendering",
+      "Built-in ad & tracking blocker",
+      "Minimalist memory footprint optimized for low-end devices",
+      "Custom privacy tabs and bookmark manager"
+    ],
+    "tech_stack": [
+      "Kotlin",
+      "Android WebView",
+      "Material Design 3"
+    ]
+  },
+  {
+    "name": "Aria-The-Ai-Assistant-By-Rauf-apk",
+    "slug": "aria-the-ai-assistant-by-rauf-apk",
+    "title": "Aria AI Personal Assistant",
+    "category": "AI & Autonomous Agents",
+    "description": "Personal AI Assistant Android app crafted for natural conversation, productivity automation, schedule management, and instant knowledge queries.",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-22",
+    "html_url": "https://github.com/raufzen/Aria-The-Ai-Assistant-By-Rauf-apk",
+    "featured": true,
+    "badge": "Smart Assistant",
+    "icon": "sparkles",
+    "features": [
+      "Natural language voice interactions",
+      "Smart notification summary and reminders",
+      "Context-aware assistant responses",
+      "Sleek fluid animations and dark mode UI"
+    ],
+    "tech_stack": [
+      "Kotlin",
+      "AI Core",
+      "Android SDK"
+    ]
+  },
+  {
+    "name": "Claude-BugHunter",
+    "slug": "claude-bughunter",
+    "title": "Claude BugHunter",
+    "category": "Cybersecurity & Red Teaming",
+    "description": "A comprehensive, self-contained red-team and bug hunting skill bundle for Anthropic Claude. Features 85+ specialized skills covering smart contract auditing, web vulnerabilities, reverse engineering, and threat intelligence.",
+    "language": "Python",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-23",
+    "html_url": "https://github.com/raufzen/Claude-BugHunter",
+    "featured": true,
+    "badge": "Flagship Security Bundle",
+    "icon": "shield-alert",
+    "features": [
+      "85+ Specialized red-team skills (EVM, Solana, Web, Recon, OSINT)",
+      "Automated triage, proof-of-concept generator, and CVSS calculator",
+      "Multi-agent swarm for security code audits",
+      "Strict non-destructive assessment guardrails"
+    ],
+    "tech_stack": [
+      "Python",
+      "Claude API",
+      "Bash",
+      "Security Tools"
+    ]
+  },
+  {
+    "name": "KomalAI",
+    "slug": "komalai",
+    "title": "KomalAI Autonomous Controller",
+    "category": "AI & Autonomous Agents",
+    "description": "Voice-Activated Autonomous Phone Controller Android App utilizing Google Gemini API and Android Accessibility Service for intelligent hands-free device navigation and automated tasks.",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-23",
+    "html_url": "https://github.com/raufzen/KomalAI",
+    "featured": true,
+    "badge": "Voice Autonomous AI",
+    "icon": "bot",
+    "features": [
+      "Real-time voice command processing with Google Gemini",
+      "Android Accessibility Service integration for UI manipulation",
+      "Autonomous multi-step app navigation and task execution",
+      "Privacy-preserving local intent recognition"
+    ],
+    "tech_stack": [
+      "Kotlin",
+      "Google Gemini API",
+      "Android Accessibility",
+      "Jetpack Compose"
+    ]
+  },
+  {
+    "name": "antigem",
+    "slug": "antigem",
+    "title": "AntiGem Workspace",
+    "category": "AI & Autonomous Agents",
+    "description": "AntiGem by Rauf - A revolutionary AI coding workspace and intelligent assistant environment engineered specifically for Android and mobile-first developers.",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-23",
+    "html_url": "https://github.com/raufzen/antigem",
+    "featured": true,
+    "badge": "Mobile AI IDE",
+    "icon": "cpu",
+    "features": [
+      "Native Android AI development workspace",
+      "Autonomous subagent orchestration & terminal execution",
+      "Integrated file manager, syntax highlighting, and live logs",
+      "Zero cloud lock-in with local mobile workflows"
+    ],
+    "tech_stack": [
+      "Kotlin",
+      "Android SDK",
+      "Termux",
+      "LLM Integration"
+    ]
+  },
+  {
+    "name": "garak",
+    "slug": "garak",
+    "title": "garak LLM Vulnerability Scanner",
+    "category": "Cybersecurity & Red Teaming",
+    "description": "Generative AI Red-teaming & Assessment Kit. Scans large language models and multi-agent pipelines for prompt injection, jailbreaks, data leakage, and hallucination vectors.",
+    "language": "Python",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-23",
+    "html_url": "https://github.com/raufzen/garak",
+    "featured": true,
+    "badge": "LLM Red-Teaming",
+    "icon": "lock",
+    "features": [
+      "Automated probe execution across 40+ vulnerability modules",
+      "Jailbreak and prompt injection benchmark generator",
+      "Comprehensive risk scoring and mitigation guidance",
+      "Seamless CI/CD pipeline security integration"
+    ],
+    "tech_stack": [
+      "Python",
+      "HuggingFace",
+      "PyTorch",
+      "Security Probes"
+    ]
+  },
+  {
+    "name": "osintgram",
+    "slug": "osintgram",
+    "title": "Osintgram AI Recon",
+    "category": "Cybersecurity & Red Teaming",
+    "description": "Advanced Instagram OSINT & Reconnaissance Suite integrated with Local AI processing and modern responsive Web UI for intelligence gathering and security investigations.",
+    "language": "Python",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-23",
+    "html_url": "https://github.com/raufzen/osintgram",
+    "featured": true,
+    "badge": "OSINT & Intelligence",
+    "icon": "search",
+    "features": [
+      "Comprehensive target footprinting and relationship analysis",
+      "Local AI analysis of image captions and geo-metadata",
+      "Interactive Web Dashboard with interactive visualization graph",
+      "Exportable security reporting formats (JSON, CSV, PDF)"
+    ],
+    "tech_stack": [
+      "Python",
+      "Flask/FastAPI",
+      "OSINT Tools",
+      "Web UI"
+    ]
+  },
+  {
+    "name": "Aura-Rauf-s-New-AI_APK",
+    "slug": "aura-rauf-s-new-ai_apk",
+    "title": "Aura Rauf s New AI APK",
+    "category": "AI & Autonomous Agents",
+    "description": "This is my new ai gaming turbo for gaming ",
+    "language": "Kotlin",
+    "stars": 1,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-23",
+    "html_url": "https://github.com/raufzen/Aura-Rauf-s-New-AI_APK",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Ai-new",
+    "slug": "ai-new",
+    "title": "Ai new",
+    "category": "AI & Autonomous Agents",
+    "description": "Apk",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-29",
+    "html_url": "https://github.com/raufzen/Ai-new",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Aira-me",
+    "slug": "aira-me",
+    "title": "Aira me",
+    "category": "AI & Autonomous Agents",
+    "description": "..",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-09-04",
+    "html_url": "https://github.com/raufzen/Aira-me",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Aira-quantum-ai-",
+    "slug": "aira-quantum-ai-",
+    "title": "Aira quantum ai",
+    "category": "AI & Autonomous Agents",
+    "description": "Apk",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-29",
+    "html_url": "https://github.com/raufzen/Aira-quantum-ai-",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Aja",
+    "slug": "aja",
+    "title": "Aja",
+    "category": "Developer Tools & Open Source",
+    "description": "Hehs",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-09-04",
+    "html_url": "https://github.com/raufzen/Aja",
+    "featured": false,
+    "badge": "Tool / Script",
+    "icon": "code",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Akira-new-ai-apk",
+    "slug": "akira-new-ai-apk",
+    "title": "Akira new ai apk",
+    "category": "AI & Autonomous Agents",
+    "description": "Meet my new ai",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-23",
+    "html_url": "https://github.com/raufzen/Akira-new-ai-apk",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Al-Quraan-2-apk",
+    "slug": "al-quraan-2-apk",
+    "title": "Al Quraan 2 apk",
+    "category": "Islamic & Lifestyle Apps",
+    "description": "A free aap",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-21",
+    "html_url": "https://github.com/raufzen/Al-Quraan-2-apk",
+    "featured": false,
+    "badge": "Android App",
+    "icon": "book-open",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Al-Quraan-apk",
+    "slug": "al-quraan-apk",
+    "title": "Al Quraan apk",
+    "category": "Islamic & Lifestyle Apps",
+    "description": "Al Quraan apk ",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-26",
+    "html_url": "https://github.com/raufzen/Al-Quraan-apk",
+    "featured": false,
+    "badge": "Android App",
+    "icon": "book-open",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Apk-ai",
+    "slug": "apk-ai",
+    "title": "Apk ai",
+    "category": "AI & Autonomous Agents",
+    "description": "Ai akp",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-30",
+    "html_url": "https://github.com/raufzen/Apk-ai",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Aura-Queen-ai-apk",
+    "slug": "aura-queen-ai-apk",
+    "title": "Aura Queen ai apk",
+    "category": "AI & Autonomous Agents",
+    "description": "A most advanced ai",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-22",
+    "html_url": "https://github.com/raufzen/Aura-Queen-ai-apk",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Aura-Rauf-s-New-",
+    "slug": "aura-rauf-s-new-",
+    "title": "Aura Rauf s New",
+    "category": "AI & Autonomous Agents",
+    "description": "My new ai ",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-23",
+    "html_url": "https://github.com/raufzen/Aura-Rauf-s-New-",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Bot",
+    "slug": "bot",
+    "title": "Bot",
+    "category": "AI & Autonomous Agents",
+    "description": "Repository Bot developed by Rauf Zen (Other).",
+    "language": "Other",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-09-21",
+    "html_url": "https://github.com/raufzen/Bot",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Other",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin",
+      "Shell"
+    ]
+  },
+  {
+    "name": "Bvh",
+    "slug": "bvh",
+    "title": "Bvh",
+    "category": "Developer Tools & Open Source",
+    "description": "Gju",
+    "language": "TypeScript",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-09-08",
+    "html_url": "https://github.com/raufzen/Bvh",
+    "featured": false,
+    "badge": "Tool / Script",
+    "icon": "code",
+    "features": [
+      "Built with TypeScript",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "TypeScript"
+    ]
+  },
+  {
+    "name": "Bz",
+    "slug": "bz",
+    "title": "Bz",
+    "category": "Developer Tools & Open Source",
+    "description": "Sh",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-09-05",
+    "html_url": "https://github.com/raufzen/Bz",
+    "featured": false,
+    "badge": "Tool / Script",
+    "icon": "code",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Game-space-Incuding-AI-apk",
+    "slug": "game-space-incuding-ai-apk",
+    "title": "Game space Incuding AI apk",
+    "category": "AI & Autonomous Agents",
+    "description": "An ai for gaming ",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-22",
+    "html_url": "https://github.com/raufzen/Game-space-Incuding-AI-apk",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Ggg",
+    "slug": "ggg",
+    "title": "Ggg",
+    "category": "Developer Tools & Open Source",
+    "description": "Vg",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-09-07",
+    "html_url": "https://github.com/raufzen/Ggg",
+    "featured": false,
+    "badge": "Tool / Script",
+    "icon": "code",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Haa",
+    "slug": "haa",
+    "title": "Haa",
+    "category": "Developer Tools & Open Source",
+    "description": "Jajsj",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-09-07",
+    "html_url": "https://github.com/raufzen/Haa",
+    "featured": false,
+    "badge": "Tool / Script",
+    "icon": "code",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Hidayah-Islamic-App",
+    "slug": "hidayah-islamic-app",
+    "title": "Hidayah Islamic App",
+    "category": "Islamic & Lifestyle Apps",
+    "description": "Repository Hidayah-Islamic-App developed by Rauf Zen (Other).",
+    "language": "Other",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-21",
+    "html_url": "https://github.com/raufzen/Hidayah-Islamic-App",
+    "featured": false,
+    "badge": "Android App",
+    "icon": "book-open",
+    "features": [
+      "Built with Other",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin",
+      "Shell"
+    ]
+  },
+  {
+    "name": "My-last-project-apk",
+    "slug": "my-last-project-apk",
+    "title": "My last project apk",
+    "category": "Android Apps & Tools",
+    "description": "It's my last project ",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-24",
+    "html_url": "https://github.com/raufzen/My-last-project-apk",
+    "featured": false,
+    "badge": "Android Utility",
+    "icon": "smartphone",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "My-new-ai-gaming-turbo-",
+    "slug": "my-new-ai-gaming-turbo-",
+    "title": "My new ai gaming turbo",
+    "category": "AI & Autonomous Agents",
+    "description": "This is my new ai gaming turbo for gaming ",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-23",
+    "html_url": "https://github.com/raufzen/My-new-ai-gaming-turbo-",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "My-new-project-",
+    "slug": "my-new-project-",
+    "title": "My new project",
+    "category": "Developer Tools & Open Source",
+    "description": "My new aap",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-25",
+    "html_url": "https://github.com/raufzen/My-new-project-",
+    "featured": false,
+    "badge": "Tool / Script",
+    "icon": "code",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Please-",
+    "slug": "please-",
+    "title": "Please",
+    "category": "Developer Tools & Open Source",
+    "description": "Ap",
+    "language": "TypeScript",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-09-08",
+    "html_url": "https://github.com/raufzen/Please-",
+    "featured": false,
+    "badge": "Tool / Script",
+    "icon": "code",
+    "features": [
+      "Built with TypeScript",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "TypeScript"
+    ]
+  },
+  {
+    "name": "Rauf-md",
+    "slug": "rauf-md",
+    "title": "Rauf md",
+    "category": "Developer Tools & Open Source",
+    "description": "Repository Rauf-md developed by Rauf Zen (Other).",
+    "language": "Other",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-09-18",
+    "html_url": "https://github.com/raufzen/Rauf-md",
+    "featured": false,
+    "badge": "Tool / Script",
+    "icon": "code",
+    "features": [
+      "Built with Other",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin",
+      "Shell"
+    ]
+  },
+  {
+    "name": "Rauf-s-Ai-apk",
+    "slug": "rauf-s-ai-apk",
+    "title": "Rauf s Ai apk",
+    "category": "AI & Autonomous Agents",
+    "description": "My new project ",
+    "language": "TypeScript",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-22",
+    "html_url": "https://github.com/raufzen/Rauf-s-Ai-apk",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with TypeScript",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "TypeScript"
+    ]
+  },
+  {
+    "name": "Rdr",
+    "slug": "rdr",
+    "title": "Rdr",
+    "category": "Developer Tools & Open Source",
+    "description": "Fr",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-09-06",
+    "html_url": "https://github.com/raufzen/Rdr",
+    "featured": false,
+    "badge": "Tool / Script",
+    "icon": "code",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Realist-Rauf-s-New-AI_APK",
+    "slug": "realist-rauf-s-new-ai_apk",
+    "title": "Realist Rauf s New AI APK",
+    "category": "AI & Autonomous Agents",
+    "description": "This is my new ai gaming turbo for gaming ",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-23",
+    "html_url": "https://github.com/raufzen/Realist-Rauf-s-New-AI_APK",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "VOS-World-",
+    "slug": "vos-world-",
+    "title": "VOS World",
+    "category": "Android Apps & Tools",
+    "description": "Apk",
+    "language": "Kotlin",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-27",
+    "html_url": "https://github.com/raufzen/VOS-World-",
+    "featured": false,
+    "badge": "Android Utility",
+    "icon": "smartphone",
+    "features": [
+      "Built with Kotlin",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin"
+    ]
+  },
+  {
+    "name": "Whatsapp-bot",
+    "slug": "whatsapp-bot",
+    "title": "Whatsapp bot",
+    "category": "AI & Autonomous Agents",
+    "description": "Repository Whatsapp-bot developed by Rauf Zen (Other).",
+    "language": "Other",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-09-17",
+    "html_url": "https://github.com/raufzen/Whatsapp-bot",
+    "featured": false,
+    "badge": "AI & ML",
+    "icon": "cpu",
+    "features": [
+      "Built with Other",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin",
+      "Shell"
+    ]
+  },
+  {
+    "name": "dev-arsenal",
+    "slug": "dev-arsenal",
+    "title": "Dev Arsenal Toolkit",
+    "category": "Cybersecurity & Red Teaming",
+    "description": "All-in-one developer and security arsenal featuring utility scripts, network scanners, code auditors, and automation helpers.",
+    "language": "Python",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-23",
+    "html_url": "https://github.com/raufzen/dev-arsenal",
+    "featured": false,
+    "badge": "Developer Arsenal",
+    "icon": "terminal",
+    "features": [
+      "Automated development workflow helpers",
+      "Security vulnerability scanners and audit tools",
+      "Multi-language code analysis scripts"
+    ],
+    "tech_stack": [
+      "Python",
+      "Shell",
+      "Security Scripts"
+    ]
+  },
+  {
+    "name": "public-apis",
+    "slug": "public-apis",
+    "title": "Public APIs Hub",
+    "category": "Developer Tools & Open Source",
+    "description": "A curated, collective directory of free and public APIs for developers worldwide to test, build prototypes, and integrate services.",
+    "language": "Python",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-23",
+    "html_url": "https://github.com/raufzen/public-apis",
+    "featured": false,
+    "badge": "API Directory",
+    "icon": "share-2",
+    "features": [
+      "Comprehensive categorisation of APIs with auth types",
+      "HTTPS & CORS support indicators",
+      "Direct links to official docs and endpoints"
+    ],
+    "tech_stack": [
+      "Python",
+      "Markdown",
+      "Open Source Data"
+    ]
+  },
+  {
+    "name": "raufzen",
+    "slug": "raufzen",
+    "title": "raufzen",
+    "category": "Developer Tools & Open Source",
+    "description": "\u2728 Special Profile README for @raufzen",
+    "language": "Other",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-11-23",
+    "html_url": "https://github.com/raufzen/raufzen",
+    "featured": false,
+    "badge": "Tool / Script",
+    "icon": "code",
+    "features": [
+      "Built with Other",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "Kotlin",
+      "Shell"
+    ]
+  },
+  {
+    "name": "roxy-",
+    "slug": "roxy-",
+    "title": "roxy",
+    "category": "Android Apps & Tools",
+    "description": "apk",
+    "language": "TypeScript",
+    "stars": 0,
+    "forks": 0,
+    "is_fork": false,
+    "updated_at": "2026-08-30",
+    "html_url": "https://github.com/raufzen/roxy-",
+    "featured": false,
+    "badge": "Android Utility",
+    "icon": "smartphone",
+    "features": [
+      "Built with TypeScript",
+      "Open source and extensible",
+      "Available on GitHub @raufzen"
+    ],
+    "tech_stack": [
+      "TypeScript"
+    ]
+  }
+]

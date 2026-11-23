@@ -1,0 +1,253 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import reposData from '../data/repos.json';
+
+// Get flagship projects with full docs
+const flagshipRepos = reposData.filter(r => r.featured || ['dev-arsenal', 'public-apis'].includes(r.name));
+---
+
+<Layout title="Documentation | Rauf Zen Repositories">
+  <Navbar />
+
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- Docs Header -->
+    <div class="mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-semibold mb-3">
+        📚 Developer Documentation
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Project Documentation & Architecture</h1>
+      <p class="text-slate-400 mt-2 max-w-2xl text-sm sm:text-base">
+        In-depth guides, installation instructions, command references, and architectural overviews for flagship repositories created by Rauf Zen.
+      </p>
+    </div>
+
+    <!-- Quick Navigation Jump Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-12">
+      {flagshipRepos.map((repo) => (
+        <a 
+          href={`#doc-${repo.slug}`} 
+          class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 text-xs font-semibold text-slate-300 hover:text-cyan-400 transition flex items-center justify-between"
+        >
+          <span class="truncate">{repo.title}</span>
+          <span class="text-slate-500">#</span>
+        </a>
+      ))}
+    </div>
+
+    <!-- Detailed Project Docs Sections -->
+    <div class="space-y-16">
+
+      <!-- Claude BugHunter -->
+      <section id="doc-claude-bughunter" class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800 scroll-mt-24">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                Cybersecurity & Red Teaming
+              </span>
+              <span class="text-xs text-slate-400">Python · 85+ Skills</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Claude BugHunter</h2>
+          </div>
+          <div class="flex items-center gap-3">
+            <a 
+              href="https://github.com/raufzen/Claude-BugHunter" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition"
+            >
+              GitHub Repository ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-6 text-sm text-slate-300">
+          <p class="leading-relaxed">
+            <strong>Claude BugHunter</strong> is a production-grade, self-contained red-team and bug hunting skill bundle designed for Anthropic Claude. It enables autonomous and guided vulnerability discovery across Web applications, Smart Contracts (EVM & Solana), Reverse Engineering, and LLM attack surfaces.
+          </p>
+
+          <h3 class="text-lg font-bold text-white">Core Capabilities</h3>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <li class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+              <strong class="text-cyan-400 block mb-1">EVM & Solana Smart Contracts</strong>
+              Reentrancy, flash loan attacks, access control flaws, and integer overflow analysis.
+            </li>
+            <li class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+              <strong class="text-indigo-400 block mb-1">Web Application Exploits</strong>
+              SQLi, SSRF, XSS, CSRF, IDOR, GraphQL vulnerabilities, and JWT tampering.
+            </li>
+            <li class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+              <strong class="text-emerald-400 block mb-1">Automated Triage & PoC</strong>
+              Generates reproducible PoC exploits and standard CVSS 3.1 severity scores.
+            </li>
+            <li class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+              <strong class="text-amber-400 block mb-1">Strict Guardrails</strong>
+              Built-in authorization validation preventing unauthorized destructive actions.
+            </li>
+          </ul>
+
+          <h3 class="text-lg font-bold text-white">Installation & Usage</h3>
+          <div class="bg-slate-950 rounded-xl p-4 font-mono text-xs text-slate-300 border border-slate-800 overflow-x-auto">
+            <div class="text-slate-500 mb-2"># Clone repository</div>
+            <div class="text-cyan-300">git clone https://github.com/raufzen/Claude-BugHunter.git</div>
+            <div class="text-cyan-300">cd Claude-BugHunter</div>
+            <div class="text-slate-500 my-2"># Install dependencies</div>
+            <div class="text-cyan-300">pip install -r requirements.txt</div>
+            <div class="text-slate-500 my-2"># Launch red-team skill engine</div>
+            <div class="text-cyan-300">python -m cbh.cli scan --target "example.com"</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AntiGem -->
+      <section id="doc-antigem" class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800 scroll-mt-24">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                AI & Autonomous Agents
+              </span>
+              <span class="text-xs text-slate-400">Kotlin · Mobile IDE</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">AntiGem Workspace</h2>
+          </div>
+          <div class="flex items-center gap-3">
+            <a 
+              href="https://github.com/raufzen/antigem" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition"
+            >
+              GitHub Repository ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-6 text-sm text-slate-300">
+          <p class="leading-relaxed">
+            <strong>AntiGem</strong> is a mobile-native AI development environment built for Android developers who code on the go. Integrating directly with Termux Linux subsystems, it provides an intelligent conversational assistant capable of executing shell commands, managing Git workflows, and refactoring code.
+          </p>
+
+          <h3 class="text-lg font-bold text-white">Key Features</h3>
+          <ul class="list-disc list-inside space-y-1.5 text-slate-300">
+            <li>Native Android Kotlin architecture optimized for battery and memory efficiency.</li>
+            <li>Embedded terminal support with direct package management and process monitoring.</li>
+            <li>Multi-turn autonomous task runner with automatic wake-up and background completion.</li>
+            <li>Persistent project memory system keeping track of preferences and development milestones.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- KomalAI -->
+      <section id="doc-komalai" class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800 scroll-mt-24">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                Voice Autonomous AI
+              </span>
+              <span class="text-xs text-slate-400">Kotlin · Gemini API · Accessibility</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">KomalAI Voice Phone Controller</h2>
+          </div>
+          <div class="flex items-center gap-3">
+            <a 
+              href="https://github.com/raufzen/KomalAI" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition"
+            >
+              GitHub Repository ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-6 text-sm text-slate-300">
+          <p class="leading-relaxed">
+            <strong>KomalAI</strong> enables total hands-free phone control via voice commands. Powered by Google Gemini multimodal API and Android's Accessibility Services, it perceives the current screen state, plans high-level user actions (click, scroll, type), and autonomously executes them on the phone.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+              <strong class="text-white block mb-1">Multimodal Vision & Plan</strong>
+              Understands screen hierarchies, button labels, and visual layouts to decide accurate click coordinates.
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+              <strong class="text-white block mb-1">Voice Activation</strong>
+              Wake-word detection and continuous streaming audio transcription for seamless hands-free assistance.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Osintgram -->
+      <section id="doc-osintgram" class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800 scroll-mt-24">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                OSINT Intelligence
+              </span>
+              <span class="text-xs text-slate-400">Python · Web UI · AI Recon</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Osintgram AI Recon</h2>
+          </div>
+          <div class="flex items-center gap-3">
+            <a 
+              href="https://github.com/raufzen/osintgram" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition"
+            >
+              GitHub Repository ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-6 text-sm text-slate-300">
+          <p class="leading-relaxed">
+            <strong>Osintgram</strong> provides security researchers and ethical investigators with deep OSINT insights from public Instagram footprints, including follower relationship graphs, tagged locations, comment sentiment, and photo analysis.
+          </p>
+        </div>
+      </section>
+
+      <!-- Al-Quraan Deen App -->
+      <section id="doc-al-quraan-deen-apk" class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800 scroll-mt-24">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/20 text-teal-300 border border-teal-500/30">
+                Islamic Mobile Application
+              </span>
+              <span class="text-xs text-slate-400">Kotlin · Jetpack · Audio</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Al-Quraan Deen App</h2>
+          </div>
+          <div class="flex items-center gap-3">
+            <a 
+              href="https://github.com/raufzen/Al-Quraan-deen-apk" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition"
+            >
+              GitHub Repository ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-6 text-sm text-slate-300">
+          <p class="leading-relaxed">
+            A beautiful, lightweight, and offline-capable Holy Quran Android application. Features crystal clear Arabic Uthmani typography, Urdu and English translations, audio recitations by renowned Qaris, and prayer time notifications.
+          </p>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <Footer />
+</Layout>

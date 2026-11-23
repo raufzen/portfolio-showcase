@@ -1,0 +1,141 @@
+---
+interface Props {
+  repo: {
+    name: string;
+    slug: string;
+    title: string;
+    category: string;
+    description: string;
+    language: string;
+    stars: number;
+    forks: number;
+    updated_at: string;
+    html_url: string;
+    featured: boolean;
+    badge: string;
+    icon: string;
+    features: string[];
+    tech_stack: string[];
+  };
+}
+
+const { repo } = Astro.props;
+
+// Language dot colors
+const langColors: Record<string, string> = {
+  Kotlin: "bg-purple-400 text-purple-300 border-purple-500/30",
+  Python: "bg-blue-400 text-blue-300 border-blue-500/30",
+  TypeScript: "bg-sky-400 text-sky-300 border-sky-500/30",
+  JavaScript: "bg-amber-400 text-amber-300 border-amber-500/30",
+  Shell: "bg-emerald-400 text-emerald-300 border-emerald-500/30",
+  Other: "bg-slate-400 text-slate-300 border-slate-500/30"
+};
+
+const langBadgeClass = langColors[repo.language] || langColors["Other"];
+---
+
+<div 
+  class="repo-item group relative rounded-2xl p-6 glass-panel glass-panel-hover flex flex-col justify-between transition-all duration-300 border border-slate-800 hover:border-cyan-500/40"
+  data-name={repo.name.toLowerCase()}
+  data-category={repo.category.toLowerCase()}
+  data-language={repo.language.toLowerCase()}
+  data-stars={repo.stars}
+  data-title={repo.title.toLowerCase()}
+  data-desc={repo.description.toLowerCase()}
+>
+  <div>
+    <!-- Header: Badge & Category -->
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-800/90 border border-slate-700 text-slate-300">
+        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+        {repo.category}
+      </span>
+
+      {repo.featured && (
+        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+          ★ Featured
+        </span>
+      )}
+    </div>
+
+    <!-- Title & Links -->
+    <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between">
+      <a href={`/repo/${repo.slug}`} class="focus:outline-none hover:underline">
+        {repo.title}
+      </a>
+      <a 
+        href={repo.html_url} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="text-slate-500 hover:text-white transition p-1"
+        title="View on GitHub"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </h3>
+
+    <div class="text-xs font-mono text-cyan-400/80 mt-0.5 mb-3">
+      raufzen/{repo.name}
+    </div>
+
+    <!-- Description -->
+    <p class="text-sm text-slate-300 line-clamp-3 leading-relaxed mb-4">
+      {repo.description}
+    </p>
+
+    <!-- Key features if available -->
+    {repo.features && repo.features.length > 0 && (
+      <ul class="text-xs text-slate-400 space-y-1 mb-4 hidden sm:block">
+        {repo.features.slice(0, 2).map((feature: string) => (
+          <li class="flex items-center gap-1.5">
+            <span class="text-cyan-400 font-bold">✓</span>
+            <span class="line-clamp-1">{feature}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+
+  <div>
+    <!-- Tech stack chips -->
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      {repo.tech_stack && repo.tech_stack.map((tech: string) => (
+        <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-slate-900/80 text-slate-400 border border-slate-800">
+          {tech}
+        </span>
+      ))}
+    </div>
+
+    <!-- Footer Meta: Stars, Lang, and Details Action -->
+    <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+      
+      <div class="flex items-center gap-3">
+        <!-- Language -->
+        <span class="flex items-center gap-1.5">
+          <span class={`w-2 h-2 rounded-full ${langBadgeClass.split(' ')[0]}`}></span>
+          <span class="font-medium text-slate-300">{repo.language}</span>
+        </span>
+
+        <!-- Stars -->
+        <span class="flex items-center gap-1 text-slate-400">
+          <svg class="w-3.5 h-3.5 text-amber-400 fill-current" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <span>{repo.stars}</span>
+        </span>
+      </div>
+
+      <!-- Detail Link -->
+      <a 
+        href={`/repo/${repo.slug}`} 
+        class="inline-flex items-center gap-1 font-semibold text-cyan-400 hover:text-cyan-300 transition group-hover:translate-x-0.5"
+      >
+        <span>Docs</span>
+        <span>→</span>
+      </a>
+
+    </div>
+  </div>
+</div>

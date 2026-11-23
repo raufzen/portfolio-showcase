@@ -1,0 +1,83 @@
+---
+interface Props {
+  totalRepos: number;
+  totalCategories: number;
+}
+
+const { totalRepos = 40, totalCategories = 5 } = Astro.props;
+---
+
+<section class="relative pt-12 pb-16 lg:pt-20 lg:pb-24 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    
+    <!-- Status / Role Badge -->
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-medium mb-6 shadow-inner">
+      <span class="flex h-2 w-2 relative">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+      </span>
+      <span>Android & Full-Stack Developer · Security & AI Explorer</span>
+    </div>
+
+    <!-- Main Headline -->
+    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight sm:leading-tight">
+      Building Sleek <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">Mobile Apps</span>, 
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">AI Agents</span> & Security Suites
+    </h1>
+
+    <!-- Description -->
+    <p class="mt-6 text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+      Welcome to the official repository index and documentation showcase for <strong class="text-white">Rauf Zen</strong> (@raufzen). Discover autonomous phone controllers, red-teaming toolkits, AI coding workspaces, and Islamic apps.
+    </p>
+
+    <!-- CTAs -->
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+      <a 
+        href="#repos" 
+        class="px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/25 transition transform hover:-translate-y-0.5 active:translate-y-0"
+      >
+        🔍 Explore {totalRepos} Repositories
+      </a>
+      
+      <a 
+        href="/docs" 
+        class="px-6 py-3 rounded-xl font-semibold text-slate-200 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 hover:border-cyan-500/40 transition transform hover:-translate-y-0.5 active:translate-y-0"
+      >
+        📚 Read Documentation
+      </a>
+
+      <a 
+        href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fraufzen%2Fportfolio-showcase" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-slate-300 hover:text-white bg-slate-900/60 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 transition"
+      >
+        <svg class="w-4 h-4 fill-white" viewBox="0 0 116 100">
+          <path d="M57.5 0L115 100H0L57.5 0z"/>
+        </svg>
+        <span>Deploy to Vercel</span>
+      </a>
+    </div>
+
+    <!-- Quick Stats Metric Grid -->
+    <div class="mt-14 max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl glass-panel border border-slate-800">
+      <div class="p-3 text-center border-r border-slate-800/80 last:border-r-0">
+        <div class="text-2xl sm:text-3xl font-extrabold text-cyan-400">{totalRepos}+</div>
+        <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Public Repos</div>
+      </div>
+      <div class="p-3 text-center border-r border-slate-800/80 last:border-r-0">
+        <div class="text-2xl sm:text-3xl font-extrabold text-indigo-400">85+</div>
+        <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Security Skills</div>
+      </div>
+      <div class="p-3 text-center border-r border-slate-800/80 last:border-r-0">
+        <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400">Kotlin & Python</div>
+        <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Core Languages</div>
+      </div>
+      <div class="p-3 text-center">
+        <div class="text-2xl sm:text-3xl font-extrabold text-amber-400">100%</div>
+        <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Open Source</div>
+      </div>
+    </div>
+
+  </div>
+</section>

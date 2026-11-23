@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import RepoCard from '../components/RepoCard.astro';
+import FilterBar from '../components/FilterBar.astro';
+import Footer from '../components/Footer.astro';
+import reposData from '../data/repos.json';
+
+// Extract unique categories & languages
+const categories = [...new Set(reposData.map((r) => r.category))];
+const languages = [...new Set(reposData.map((r) => r.language).filter((l) => l && l !== 'Other'))];
+const featuredRepos = reposData.filter((r) => r.featured);
+---
+
+<Layout title="Rauf Zen | GitHub Repositories & Architecture Showcase">
+  <Navbar />
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <Hero totalRepos={reposData.length} totalCategories={categories.length} />
+
+    <!-- Featured Projects Carousel / Grid -->
+    <section id="featured" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-slate-800/80">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-cyan-400 font-bold">Showcase Highlights</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Featured Flagship Projects</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2 sm:mt-0">
+          Curated selection of autonomous AI agents, security suites, and Android apps.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {featuredRepos.map((repo) => (
+          <RepoCard repo={repo} />
+        ))}
+      </div>
+    </section>
+
+    <!-- All Repositories with Live Filter & Search -->
+    <section id="repos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-slate-800/80">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-cyan-400 font-bold">Open Source Archive</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">All Repositories ({reposData.length})</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2 sm:mt-0">
+          Filter by category, language, or search in real-time.
+        </p>
+      </div>
+
+      <!-- Filter Bar -->
+      <FilterBar categories={categories} languages={languages} totalCount={reposData.length} />
+
+      <!-- Repositories Grid -->
+      <div id="repos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {reposData.map((repo) => (
+          <RepoCard repo={repo} />
+        ))}
+      </div>
+
+      <!-- No Results State -->
+      <div id="no-results" class="hidden text-center py-16 px-4">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-500 text-2xl">
+          🔍
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2">No matching repositories found</h3>
+        <p class="text-sm text-slate-400 max-w-md mx-auto mb-6">
+          Try adjusting your search query or selecting a different category or language filter.
+        </p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-800/80">
+      <div class="glass-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-slate-800">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-3xl">
+          <span class="text-xs uppercase tracking-widest text-cyan-400 font-bold">About the Creator</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-4">Rauf Zen</h2>
+          
+          <p class="text-slate-300 text-base leading-relaxed mb-6">
+            Rauf Zen is an Android and Full-Stack Developer specializing in Autonomous AI systems, Mobile Security, Red Teaming tooling, and performance-tuned Kotlin applications. With a focus on creating practical, elegant solutions for mobile environments, his work spans voice-driven autonomous phone navigation, large language model vulnerability auditing, and community tools.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div class="text-cyan-400 font-bold mb-1">🤖 AI & Automation</div>
+              <div class="text-xs text-slate-400">Autonomous subagents, Gemini API integrations, voice-driven device control.</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div class="text-indigo-400 font-bold mb-1">🛡️ Red-Teaming & Security</div>
+              <div class="text-xs text-slate-400">Claude BugHunter skill bundle, LLM probe auditing, OSINT reconnaissance suites.</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div class="text-emerald-400 font-bold mb-1">📱 Mobile Engineering</div>
+              <div class="text-xs text-slate-400">Native Android Kotlin, Accessibility Services, privacy-focused browsers, and Jetpack.</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a 
+              href="https://github.com/raufzen" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="px-5 py-2.5 rounded-xl font-semibold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 transition"
+            >
+              Follow on GitHub (@raufzen)
+            </a>
+            <a 
+              href="/docs" 
+              class="px-5 py-2.5 rounded-xl font-semibold text-cyan-400 hover:text-cyan-300 transition"
+            >
+              Explore Project Documentation →
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>

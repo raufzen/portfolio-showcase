@@ -1,0 +1,20 @@
+{
+  "name": "raufzen-portfolio-showcase",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Comprehensive Portfolio & Documentation Showcase for Rauf Zen's 40+ GitHub Repositories",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.5",
+    "astro": "^4.16.18",
+    "tailwindcss": "^3.4.17"
+  },
+  "author": "Rauf Zen <https://github.com/raufzen>",
+  "license": "MIT"
+}
