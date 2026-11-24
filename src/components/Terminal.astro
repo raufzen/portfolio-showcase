@@ -1,0 +1,255 @@
+---
+import reposData from '../data/repos.json';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<div class="glass-panel rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl shadow-cyan-950/40 my-10 font-mono text-xs sm:text-sm">
+  
+  <!-- Terminal Window Bar -->
+  <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-3 h-3 rounded-full bg-red-500/80 border border-red-600/50 cursor-pointer" id="term-btn-close" title="Clear"></div>
+      <div class="w-3 h-3 rounded-full bg-amber-500/80 border border-amber-600/50 cursor-pointer" id="term-btn-min" title="Minimize"></div>
+      <div class="w-3 h-3 rounded-full bg-emerald-500/80 border border-emerald-600/50 cursor-pointer" id="term-btn-max" title="Expand"></div>
+      <span class="text-xs text-slate-400 ml-2 font-medium">raufzen@cyber-hub: ~ (interactive-cli)</span>
+    </div>
+
+    <!-- Quick Run Shortcuts -->
+    <div class="hidden sm:flex items-center gap-1.5 text-[11px]">
+      <span class="text-slate-500">Quick run:</span>
+      <button class="quick-cmd px-2 py-0.5 rounded bg-slate-800 hover:bg-cyan-950 text-cyan-300 border border-slate-700 hover:border-cyan-500/50 transition" data-cmd="help">help</button>
+      <button class="quick-cmd px-2 py-0.5 rounded bg-slate-800 hover:bg-cyan-950 text-cyan-300 border border-slate-700 hover:border-cyan-500/50 transition" data-cmd="repos">repos</button>
+      <button class="quick-cmd px-2 py-0.5 rounded bg-slate-800 hover:bg-cyan-950 text-cyan-300 border border-slate-700 hover:border-cyan-500/50 transition" data-cmd="stats">stats</button>
+      <button class="quick-cmd px-2 py-0.5 rounded bg-slate-800 hover:bg-cyan-950 text-cyan-300 border border-slate-700 hover:border-cyan-500/50 transition" data-cmd="whoami">whoami</button>
+    </div>
+  </div>
+
+  <!-- Terminal Body -->
+  <div id="term-body" class="p-4 sm:p-6 bg-[#060a14]/95 text-slate-200 min-h-[260px] max-h-[380px] overflow-y-auto space-y-3 leading-relaxed">
+    
+    <!-- Welcome message -->
+    <div class="text-slate-400">
+      <p class="text-cyan-400 font-bold mb-1">⚡ Rauf Zen Interactive CLI v2.4.0 [Type 'help' to see commands]</p>
+      <p class="text-[11px] text-slate-500">Environment: Termux-Linux / Connected to 40 GitHub repositories.</p>
+    </div>
+
+    <!-- Output log container -->
+    <div id="term-output" class="space-y-3"></div>
+
+    <!-- Active Input Line -->
+    <div class="flex items-center gap-2 pt-2 text-cyan-400">
+      <span class="select-none font-bold text-emerald-400">raufzen@sys:~$</span>
+      <input 
+        type="text" 
+        id="term-input" 
+        autocomplete="off" 
+        autocorrect="off" 
+        autocapitalize="off" 
+        spellcheck="false" 
+        placeholder="Type a command (e.g., 'help', 'repos', 'cat bughunter')..." 
+        class="bg-transparent flex-grow outline-none border-none text-slate-100 placeholder-slate-600 text-xs sm:text-sm font-mono caret-cyan-400"
+      />
+    </div>
+
+  </div>
+</div>
+
+<!-- Embedded Repos Data for Terminal JS -->
+<script define:vars={{ reposData, baseUrl }}>
+  const repos = reposData;
+  const base = baseUrl;
+
+  const inputEl = document.getElementById('term-input');
+  const outputEl = document.getElementById('term-output');
+  const bodyEl = document.getElementById('term-body');
+  const quickButtons = document.querySelectorAll('.quick-cmd');
+  const closeBtn = document.getElementById('term-btn-close');
+
+  let commandHistory = [];
+  let historyIndex = -1;
+
+  function scrollToBottom() {
+    if (bodyEl) bodyEl.scrollTop = bodyEl.scrollHeight;
+  }
+
+  function appendOutput(cmd, htmlContent) {
+    if (!outputEl) return;
+    const item = document.createElement('div');
+    item.className = 'space-y-1.5';
+    item.innerHTML = `
+      <div class="flex items-center gap-2 text-slate-400">
+        <span class="text-emerald-400 font-bold">raufzen@sys:~$</span>
+        <span class="text-cyan-300 font-semibold">${escapeHtml(cmd)}</span>
+      </div>
+      <div class="pl-2 border-l border-cyan-500/30 text-slate-300 text-xs">${htmlContent}</div>
+    `;
+    outputEl.appendChild(item);
+    scrollToBottom();
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>'"]/g, 
+      tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+    );
+  }
+
+  function executeCommand(rawCommand) {
+    const cmd = rawCommand.trim();
+    if (!cmd) return;
+
+    commandHistory.push(cmd);
+    historyIndex = commandHistory.length;
+
+    const parts = cmd.toLowerCase().split(/\s+/);
+    const mainCmd = parts[0];
+    const arg = parts.slice(1).join(' ');
+
+    switch (mainCmd) {
+      case 'help':
+        appendOutput(cmd, `
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+            <div><strong class="text-cyan-400">repos</strong> - List all 40 repositories</div>
+            <div><strong class="text-cyan-400">cat &lt;repo&gt;</strong> - View repository details</div>
+            <div><strong class="text-cyan-400">stats</strong> - Show developer metrics</div>
+            <div><strong class="text-cyan-400">whoami</strong> - Profile & author info</div>
+            <div><strong class="text-cyan-400">docs</strong> - Jump to full documentation</div>
+            <div><strong class="text-cyan-400">open &lt;repo&gt;</strong> - Open GitHub repository</div>
+            <div><strong class="text-cyan-400">clear</strong> - Clear terminal window</div>
+          </div>
+        `);
+        break;
+
+      case 'repos':
+      case 'list':
+        let repoListHtml = `<div class="text-[11px] space-y-1 max-h-48 overflow-y-auto pr-2">`;
+        repos.slice(0, 15).forEach(r => {
+          repoListHtml += `
+            <div class="flex items-center justify-between gap-2 border-b border-slate-800/60 pb-1">
+              <span class="text-white font-medium">${r.name}</span>
+              <span class="text-cyan-400 font-mono text-[10px]">${r.language}</span>
+              <span class="text-amber-400 text-[10px]">★ ${r.stars}</span>
+            </div>
+          `;
+        });
+        repoListHtml += `
+            <div class="text-slate-500 pt-1">...and ${repos.length - 15} more. Type <code class="text-cyan-300">cat &lt;repo-name&gt;</code> for details.</div>
+          </div>
+        `;
+        appendOutput(cmd, repoListHtml);
+        break;
+
+      case 'stats':
+        appendOutput(cmd, `
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+            <div class="p-2 rounded bg-slate-900 border border-slate-800"><span class="block font-bold text-cyan-400">${repos.length}</span>Repos</div>
+            <div class="p-2 rounded bg-slate-900 border border-slate-800"><span class="block font-bold text-indigo-400">85+</span>Skills</div>
+            <div class="p-2 rounded bg-slate-900 border border-slate-800"><span class="block font-bold text-emerald-400">Kotlin/Py</span>Primary</div>
+            <div class="p-2 rounded bg-slate-900 border border-slate-800"><span class="block font-bold text-amber-400">100%</span>Open Source</div>
+          </div>
+        `);
+        break;
+
+      case 'whoami':
+        appendOutput(cmd, `
+          <div>
+            <p><strong class="text-white">Rauf Zen</strong> (@raufzen)</p>
+            <p class="text-slate-400">Android & Full-Stack Developer · Security & AI Explorer</p>
+            <p class="text-cyan-400 text-[11px] mt-1">GitHub: <a href="https://github.com/raufzen" target="_blank" class="underline">https://github.com/raufzen</a></p>
+          </div>
+        `);
+        break;
+
+      case 'cat':
+      case 'info':
+        if (!arg) {
+          appendOutput(cmd, `<span class="text-amber-400">Usage: cat &lt;repo-name&gt; (e.g. 'cat claude-bughunter', 'cat antigem')</span>`);
+          break;
+        }
+        const found = repos.find(r => 
+          r.name.toLowerCase().includes(arg) || r.slug.toLowerCase().includes(arg)
+        );
+        if (found) {
+          appendOutput(cmd, `
+            <div class="space-y-1">
+              <div class="text-cyan-300 font-bold">${found.title} (${found.category})</div>
+              <div class="text-slate-300">${found.description}</div>
+              <div class="text-[11px] text-slate-400 font-mono">Language: ${found.language} | Stars: ★${found.stars}</div>
+              <div class="pt-1">
+                <a href="${base}/repo/${found.slug}" class="text-cyan-400 underline font-semibold mr-3">Read Docs →</a>
+                <a href="${found.html_url}" target="_blank" class="text-indigo-400 underline">Open on GitHub ↗</a>
+              </div>
+            </div>
+          `);
+        } else {
+          appendOutput(cmd, `<span class="text-rose-400">Repository not found matching "${escapeHtml(arg)}". Type 'repos' to see all.</span>`);
+        }
+        break;
+
+      case 'open':
+        if (!arg) {
+          appendOutput(cmd, `<span class="text-amber-400">Usage: open &lt;repo-name&gt;</span>`);
+          break;
+        }
+        const targetRepo = repos.find(r => 
+          r.name.toLowerCase().includes(arg) || r.slug.toLowerCase().includes(arg)
+        );
+        if (targetRepo) {
+          appendOutput(cmd, `<span class="text-emerald-400">Opening ${targetRepo.html_url}...</span>`);
+          window.open(targetRepo.html_url, '_blank');
+        } else {
+          appendOutput(cmd, `<span class="text-rose-400">Repository not found.</span>`);
+        }
+        break;
+
+      case 'docs':
+        appendOutput(cmd, `<span class="text-cyan-400">Navigating to Documentation...</span>`);
+        window.location.href = `${base}/docs`;
+        break;
+
+      case 'clear':
+      case 'cls':
+        if (outputEl) outputEl.innerHTML = '';
+        break;
+
+      default:
+        appendOutput(cmd, `<span class="text-rose-400">Command not recognized: '${escapeHtml(cmd)}'. Type <code class="text-cyan-300">help</code> for list.</span>`);
+    }
+  }
+
+  if (inputEl) {
+    inputEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const val = inputEl.value;
+        inputEl.value = '';
+        executeCommand(val);
+      } else if (e.key === 'ArrowUp') {
+        if (commandHistory.length > 0 && historyIndex > 0) {
+          historyIndex--;
+          inputEl.value = commandHistory[historyIndex] || '';
+        }
+      } else if (e.key === 'ArrowDown') {
+        if (historyIndex < commandHistory.length - 1) {
+          historyIndex++;
+          inputEl.value = commandHistory[historyIndex] || '';
+        } else {
+          historyIndex = commandHistory.length;
+          inputEl.value = '';
+        }
+      }
+    });
+  }
+
+  quickButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cmd = btn.getAttribute('data-cmd');
+      if (cmd) executeCommand(cmd);
+    });
+  });
+
+  if (closeBtn && outputEl) {
+    closeBtn.addEventListener('click', () => {
+      outputEl.innerHTML = '';
+    });
+  }
+</script>
